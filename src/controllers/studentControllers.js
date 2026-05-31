@@ -1,15 +1,28 @@
 const db = require("../config/db.js")
 
-const getStudents = (req, res) => {
-    db.query(
-        "SELECT * FROM students",
-        (err, results) => {
-            if (err) {
-                return res.status(500).send("Database Error");
-            }
-            res.json(results);
-        }
-    );
+const getStudents = async (req, res) => {
+
+    try {
+        const [rows] = await db.promise().query(
+            "SELECT * FROM students"
+        );
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Database Error"
+        })
+    }
+
+    //DIRECT WAY TO FETCH FROM DB WIHOUT USING AWAIT
+    //     db.query(
+    //         "SELECT * FROM students",
+    //         (err, results) => {
+    //             if (err) {
+    //                 return res.status(500).send("Database Error");
+    //             }
+    //             res.json(results);
+    //         }
+    //     );
 };
 
 const getStudentById = (req, res) => {
