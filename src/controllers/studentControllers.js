@@ -113,25 +113,50 @@ const createNewStudent = async (req, res) => {
     // );
 };
 
-const updateStudentNameById = (req, res) => {
-    if (!req.body.name) {
-        return res.status(400).send("Name is Required")
+const updateStudentNameById = async (req, res) => {
+
+
+    try {
+        if (!req.body.name) {
+            return res.status(400).send("Name is Required")
+        }
+
+        const [rows] = await db.promise().query(
+            "UPDATE students SET name = ? WHERE id = ?",
+            [req.body.name, req.params.id]
+        );
+
+        if (rows.affectedRows === 0) {
+            return res.status(404).send("Student not Found");
+        }
+
+        res.status(201).json({
+            message: "Student Name Updated"
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Database Error"
+        })
     }
 
-    db.query("UPDATE students SET name = ? WHERE id = ?",
-        [req.body.name, req.params.id],
-        (err, results) => {
-            if (err) {
-                return res.status(500).send("Database Error");
-            }
 
-            if (results.affectedRows === 0) {
-                return res.status(404).send("Student not Found");
-            }
+    //OLD METHOD TO QUERY
+    // db.query("UPDATE students SET name = ? WHERE id = ?",
+    //     [req.body.name, req.params.id],
+    //     (err, results) => {
+    //         if (err) {
+    //             return res.status(500).send("Database Error");
+    //         }
 
-            res.status(200).send("Student Name Updated");
-        }
-    );
+    //         if (results.affectedRows === 0) {
+    //             return res.status(404).send("Student not Found");
+    //         }
+
+    //         res.status(200).send("Student Name Updated");
+    //     }
+    // );
 };
 
 const deleteStudentById = (req, res) => {
