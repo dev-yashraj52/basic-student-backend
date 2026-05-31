@@ -2,6 +2,7 @@ const express = require("express");
 require('dotenv').config({ path: '.env' });
 
 const studentRoutes = require("./src/routes/studentRoutes.js");
+const examRoutes = require("./src/routes/examRoutes.js");
 
 const app = express();
 
