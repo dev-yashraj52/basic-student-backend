@@ -67,29 +67,50 @@ const getStudentById = async (req, res) => {
     // );
 };
 
-const createNewStudent = (req, res) => {
-    const { name } = req.body;
+const createNewStudent = async (req, res) => {
 
-    if (!name) {
-        return res.status(400).send("Name is Required")
-    }
 
-    db.query(
-        "INSERT INTO students (name) VALUES (?)",
-        [name],
-        (err, results) => {
-            if (err) {
-                return res.status(500).send("Database Error");
-            }
+    try {
+        const { name } = req.body;
 
-            res.status(201).json({
-                message: "Student Created",
-                id: results.insertId
-            });
+        if (!name) {
+            return res.status(400).send("Name is Required")
         }
 
+        const [result] = await db.promise().query(
+            "INSERT INTO students (name) VALUES (?)",
+            [name],
+        );
 
-    );
+        res.status(201).json({
+            message: "Student Created",
+            id: result.insertId
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Database Error"
+        })
+    }
+
+    //DIRECT METHOD FOR QUERY
+    // db.query(
+    //     "INSERT INTO students (name) VALUES (?)",
+    //     [name],
+    //     (err, results) => {
+    //         if (err) {
+    //             return res.status(500).send("Database Error");
+    //         }
+
+    //         res.status(201).json({
+    //             message: "Student Created",
+    //             id: results.insertId
+    //         });
+    //     }
+
+
+    // );
 };
 
 const updateStudentNameById = (req, res) => {
