@@ -121,12 +121,12 @@ const updateStudentNameById = async (req, res) => {
             return res.status(400).json({ name: "Name is Required" })
         }
 
-        const [rows] = await db.promise().query(
+        const [result] = await db.promise().query(
             "UPDATE students SET name = ? WHERE id = ?",
             [req.body.name, req.params.id]
         );
 
-        if (rows.affectedRows === 0) {
+        if (result.affectedRows === 0) {
             return res.status(404).json({ name: "Student not Found" });
         }
 
@@ -162,12 +162,12 @@ const updateStudentNameById = async (req, res) => {
 const deleteStudentById = async (req, res) => {
 
     try {
-        const [rows] = await db.promise().query(
+        const [result] = await db.promise().query(
             "DELETE FROM students WHERE id = ?",
             [req.params.id],
         );
 
-        if (rows.affectedRows === 0) {
+        if (result.affectedRows === 0) {
             return res.status(404).json({ name: "Student not Found" });
         }
 
