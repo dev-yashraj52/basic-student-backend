@@ -118,7 +118,7 @@ const updateStudentNameById = async (req, res) => {
 
     try {
         if (!req.body.name) {
-            return res.status(400).json({ name: "Name is Required" })
+            return res.status(400).json({ message: "Name is Required" })
         }
 
         const [result] = await db.promise().query(
@@ -127,10 +127,10 @@ const updateStudentNameById = async (req, res) => {
         );
 
         if (result.affectedRows === 0) {
-            return res.status(404).json({ name: "Student not Found" });
+            return res.status(404).json({ message: "Student not Found" });
         }
 
-        res.status(201).json({
+        res.status(200).json({
             message: "Student Name Updated"
         });
 
@@ -168,7 +168,7 @@ const deleteStudentById = async (req, res) => {
         );
 
         if (result.affectedRows === 0) {
-            return res.status(404).json({ name: "Student not Found" });
+            return res.status(404).json({ message: "Student not Found" });
         }
 
         res.status(200).json({
