@@ -118,7 +118,7 @@ const updateStudentNameById = async (req, res) => {
 
     try {
         if (!req.body.name) {
-            return res.status(400).send("Name is Required")
+            return res.status(400).json({ name: "Name is Required" })
         }
 
         const [rows] = await db.promise().query(
@@ -127,7 +127,7 @@ const updateStudentNameById = async (req, res) => {
         );
 
         if (rows.affectedRows === 0) {
-            return res.status(404).send("Student not Found");
+            return res.status(404).json({ name: "Student not Found" });
         }
 
         res.status(201).json({
@@ -159,21 +159,45 @@ const updateStudentNameById = async (req, res) => {
     // );
 };
 
-const deleteStudentById = (req, res) => {
-    db.query("DELETE FROM students WHERE id = ?",
-        [req.params.id],
-        (err, results) => {
-            if (err) {
-                return res.status(500).send("Database Error");
-            }
+const deleteStudentById = async (req, res) => {
 
-            if (results.affectedRows === 0) {
-                return res.status(404).send("Student not Found");
-            }
+    try {
+        const [rows] = await db.promise().query(
+            "DELETE FROM students WHERE id = ?",
+            [req.params.id],
+        );
 
-            res.status(200).send("Student Deleted");
+        if (rows.affectedRows === 0) {
+            return res.status(404).json({ name: "Student not Found" });
         }
-    );
+
+        res.status(200).json({
+            message: "Student Deleted from database"
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Database Error"
+        })
+    }
+
+
+    //OLD METHOD
+    // db.query("DELETE FROM students WHERE id = ?",
+    //     [req.params.id],
+    //     (err, results) => {
+    //         if (err) {
+    //             return res.status(500).send("Database Error");
+    //         }
+
+    //         if (results.affectedRows === 0) {
+    //             return res.status(404).send("Student not Found");
+    //         }
+
+    //         res.status(200).send("Student Deleted");
+    //     }
+    // );
 };
 
 
