@@ -28,20 +28,43 @@ const getStudents = async (req, res) => {
     //     );
 };
 
-const getStudentById = (req, res) => {
-    db.query(
-        "SELECT * FROM students WHERE id = ?",
-        [req.params.id],
-        (err, results) => {
-            if (err) {
-                return res.status(500).send("Database Error");
-            }
-            if (results.length === 0) {
-                return res.status(404).send("Student Not Found");
-            }
-            res.status(200).json(results[0]);
+const getStudentById = async (req, res) => {
+
+    try {
+        const [rows] = await db.promise().query(
+            "SELECT * FROM students WHERE id = ?",
+            [req.params.id]
+        );
+
+        if (rows.length === 0) {
+            return res.status(404).json({
+                message: "Student by such Id not found"
+            })
         }
-    );
+
+        res.status(200).json(rows[0])
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Database Error"
+        })
+    }
+
+    //DIRECT METHOD FOR QUERY
+    // db.query(
+    //     "SELECT * FROM students WHERE id = ?",
+    //     [req.params.id],
+    //     (err, results) => {
+    //         if (err) {
+    //             return res.status(500).send("Database Error");
+    //         }
+    //         if (results.length === 0) {
+    //             return res.status(404).send("Student Not Found");
+    //         }
+    //         res.status(200).json(results[0]);
+    //     }
+    // );
 };
 
 const createNewStudent = (req, res) => {
