@@ -10,7 +10,7 @@ const { getExams,
 } = require("../controllers/examControllers.js");
 
 router.get("/exams", getExams);
-router.get("/exams/:id", getStudentById);
+router.get("/exams/:id", getExamsById);
 
 router.post("/students", createNewExam);
 
