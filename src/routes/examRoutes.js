@@ -12,11 +12,11 @@ const { getExams,
 router.get("/exams", getExams);
 router.get("/exams/:id", getExamsById);
 
-router.post("/students", createNewExam);
+router.post("/exams", createNewExam);
 
-router.put("/students/:id", updateExamNameById);
-router.put("/students/:id", updateExamMarksbyId);
+router.put("/exams/:id/title", updateExamNameById);
+router.put("/exams/:id/marks", updateExamMarksbyId);
 
-router.delete("/students/:id", deleteExamById);
+router.delete("/exams/:id", deleteExamById);
 
 module.exports = router;
