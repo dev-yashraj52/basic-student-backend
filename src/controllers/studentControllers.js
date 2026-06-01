@@ -91,7 +91,7 @@ const createNewStudent = async (req, res) => {
         console.error(error);
         res.status(500).json({
             message: "Database Error"
-        })
+        });
     }
 
     //DIRECT METHOD FOR QUERY
@@ -138,7 +138,7 @@ const updateStudentNameById = async (req, res) => {
         console.error(error);
         res.status(500).json({
             message: "Database Error"
-        })
+        });
     }
 
 
