@@ -5,6 +5,10 @@ async function loadStudents() {
 
     const students = await response.json();
 
+    //we can combine above two const in one single too
+    //like this 
+    //const students = await(await fetch("API Here")).json();
+
     console.log(students);
 }
 
