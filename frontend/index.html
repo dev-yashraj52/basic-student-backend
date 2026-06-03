@@ -11,10 +11,21 @@
 <body>
     <h1>Students</h1>
     <div class="flex vertical">
-        <button id="#add-student-menu-btn">Add Student</button>
-        <button id="#update-student-menu-btn">Update Student</button>
-        <button id="#search-student-menu-btn">Search Student by ID</button>
-        <button id="#delete-student-menu-btn">Delete Student</button>
+        <button class="toggle-btn" data-target="add-student-content">Add Student</button>
+        <button class="toggle-btn" data-target="update-student-content">Update Student</button>
+        <button class="toggle-btn" data-target="search-student-content">Search Student by ID</button>
+        <button class="toggle-btn" data-target="add-student-content">Delete Student</button>
+    </div>
+
+    <div class="content-group">
+        <div id="add-student-content" class="flex">
+            <div class="label-container">
+                <label for="student-name">Enter Student Name</label>
+                <input type="text" id="student-name" name="student-name" required>
+                <br>
+                <button class="toggle-btn" id="add-student-btn">Add Student</button>
+            </div>
+        </div>
     </div>
 
     <ul id="studentList"></ul>
