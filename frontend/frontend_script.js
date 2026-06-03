@@ -3,6 +3,19 @@ import * as API from './backend_script.js'
 const buttons = document.querySelectorAll('.toggle-btn');
 const boxes = document.querySelectorAll('.content-student');
 
+async function loadStudents() {
+    const students = await API.getStudents();
+    const studentList = document.getElementById('student-list');
+
+    studentList.innerHTML = " ";
+    students.forEach(student => {
+        const li = document.createElement('li');
+        li.textContent = `${student.id} - ${student.name}`
+
+        studentList.appendChild(li);
+    })
+}
+
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const targetId = button.getAttribute('data-target');
@@ -33,4 +46,4 @@ document.getElementById("add-student-btn").addEventListener("click", async () =>
     }, 2000)
 })
 
-API.loadStudents();
+document.getElementById('load-student-btn').addEventListener("click", () => { loadStudents() });

@@ -1,4 +1,4 @@
-export async function loadStudents() {
+export async function getStudents() {
     const response = await fetch(
         "http://localhost:3000/students"
     );
@@ -9,7 +9,7 @@ export async function loadStudents() {
     //like this 
     //const students = await(await fetch("API Here")).json();
 
-    console.log(students);
+    return students;
 }
 
 export async function addStudent(name) {
