@@ -14,46 +14,46 @@
         <button class="toggle-btn" data-target="add-student-content">Add Student</button>
         <button class="toggle-btn" data-target="update-student-content">Update Student</button>
         <button class="toggle-btn" data-target="search-student-content">Search Student by ID</button>
-        <button class="toggle-btn" data-target="add-student-content">Delete Student</button>
+        <button class="toggle-btn" data-target="delete-student-content">Delete Student</button>
     </div>
     <!-- Add Student -->
     <div class="content-group flex">
         <div class="flex content-student hidden" id="add-student-content">
             <div class="form-container">
-                <label for="student-name-field">Enter Student Name</label>
-                <input type="text" id="student-name-field" name="student-name-field" required>
+                <label for="add-student-name-field">Enter Student Name</label>
+                <input type="text" id="add-student-name-field" name="add-student-name-field" required>
                 <br>
-                <button class="toggle-btn" id="add-student-btn">Add Student</button>
+                <button id="add-student-btn">Add Student</button>
             </div>
         </div>
         <!-- Update Student -->
         <div class="flex content-student hidden" id="update-student-content">
             <div class="form-container">
-                <label for="id-field">Enter Id</label>
-                <input type="text" id="id-field" name="id-field" required>
+                <label for="update-id-field">Enter Id</label>
+                <input type="text" id="update-id-field" name="update-id-field" required>
                 <br>
-                <label for="student-name">Enter Student Name</label>
-                <input type="text" id="student-name" name="student-name" required>
+                <label for="update-student-name">Enter Student Name</label>
+                <input type="text" id="update-student-name" name="update-student-name" required>
                 <br>
-                <button class="toggle-btn" id="update-student-btn">Update Student</button>
+                <button id="update-student-btn">Update Student</button>
             </div>
         </div>
         <!-- Search Student -->
         <div class="flex content-student hidden" id="search-student-content">
             <div class="form-container">
-                <label for="id-field">Enter Id</label>
-                <input type="text" id="id-field" name="id-field" required>
+                <label for="search-id-field">Enter Id</label>
+                <input type="text" id="search-id-field" name="search-id-field" required>
                 <br>
-                <button class="toggle-btn" id="search-student-btn">Search Student</button>
+                <button id="search-student-btn">Search Student</button>
             </div>
         </div>
         <!-- Delete Student -->
-        <div class="flex content-student hidden2" id="delete-student-content">
+        <div class="flex content-student" id="delete-student-content">
             <div class="form-container">
-                <label for="id-field">Enter Id</label>
-                <input type="text" id="id-field" name="id-field" required>
+                <label for="delete-id-field">Enter Id</label>
+                <input type="text" id="delete-id-field" name="delete-id-field" required>
                 <br>
-                <button class="toggle-btn" id="delete-student-btn">Delete Student</button>
+                <button id="delete-student-btn">Delete Student</button>
             </div>
         </div>
     </div>
