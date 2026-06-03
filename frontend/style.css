@@ -10,3 +10,13 @@ button {
     padding: 10px 20px;
     border-radius: 10px;
 }
+
+button:active {
+    transform: scale(0.99);
+    opacity: 0.9;
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
