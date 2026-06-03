@@ -20,10 +20,17 @@ buttons.forEach(button => {
     })
 })
 
+const messageDisplay = document.getElementById('message-display');
+
 document.getElementById("add-student-btn").addEventListener("click", async () => {
 
-    const response = await API.addStudent(document.getElementById("add-student-name-field").value);
-    console.log(response);
+    const nameField = document.getElementById("add-student-name-field");
+    const response = await API.addStudent(nameField.value);
+    nameField.value = '';
+    messageDisplay.textContent = response.message;
+    setTimeout(() => {
+        messageDisplay.textContent = '';
+    }, 2000)
 })
 
 API.loadStudents();

@@ -50,6 +50,7 @@ button:active {
     padding: 20px;
     outline: solid 1px;
     border-radius: 10px;
+    flex-direction: column;
 }
 
 .hidden {
