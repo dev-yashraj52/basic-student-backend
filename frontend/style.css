@@ -21,14 +21,27 @@ button:active {
     gap: 10px;
 }
 
-.label-container {
+.form-container {
     display: flex;
     flex-direction: column;
 }
 
-#add-student-btn {
-    padding: 5px 5px;
+.content-student input {
+    margin-top: 5px;
+    height: 20px;
+}
+
+.content-student button {
+    padding: 8px 20px;
     background-color: green;
+}
+
+#delete-student-btn {
+    background-color: rgb(134, 15, 15);
+}
+
+.tab-menu {
+    margin: 10px;
 }
 
 .content-group {
@@ -37,4 +50,8 @@ button:active {
     padding: 20px;
     outline: solid 1px;
     border-radius: 10px;
+}
+
+.hidden {
+    display: none !important;
 }
