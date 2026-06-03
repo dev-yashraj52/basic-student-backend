@@ -1,3 +1,5 @@
+import * as API from './backend_script.js'
+
 const buttons = document.querySelectorAll('.toggle-btn');
 const boxes = document.querySelectorAll('.content-student');
 
@@ -17,3 +19,9 @@ buttons.forEach(button => {
         }
     })
 })
+
+document.getElementById("add-student-btn").addEventListener("click", () => {
+    API.addStudent(document.getElementById("add-student-name-field").value);
+})
+
+API.loadStudents();

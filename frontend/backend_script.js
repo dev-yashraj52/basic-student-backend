@@ -1,4 +1,4 @@
-async function loadStudents() {
+export async function loadStudents() {
     const response = await fetch(
         "http://localhost:3000/students"
     );
@@ -12,4 +12,17 @@ async function loadStudents() {
     console.log(students);
 }
 
-loadStudents();
+export async function addStudent(name) {
+
+    const response = await fetch(
+        "http://localhost:3000/students", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: name
+        })
+    }
+    );
+}
