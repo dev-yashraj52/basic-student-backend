@@ -25,4 +25,6 @@ export async function addStudent(name) {
         })
     }
     );
+
+    return (response.json());
 }

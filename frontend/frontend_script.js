@@ -20,8 +20,10 @@ buttons.forEach(button => {
     })
 })
 
-document.getElementById("add-student-btn").addEventListener("click", () => {
-    API.addStudent(document.getElementById("add-student-name-field").value);
+document.getElementById("add-student-btn").addEventListener("click", async () => {
+
+    const response = await API.addStudent(document.getElementById("add-student-name-field").value);
+    console.log(response);
 })
 
 API.loadStudents();

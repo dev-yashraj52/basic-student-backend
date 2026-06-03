@@ -11,14 +11,15 @@
 <body>
     <h1>Students</h1>
     <div class="flex tab-menu">
-        <button class="toggle-btn" data-target="add-student-content">Add Student</button>
+        <button class="toggle-btn active" data-target="add-student-content">Add Student</button>
         <button class="toggle-btn" data-target="update-student-content">Update Student</button>
         <button class="toggle-btn" data-target="search-student-content">Search Student by ID</button>
         <button class="toggle-btn" data-target="delete-student-content">Delete Student</button>
     </div>
-    <!-- Add Student -->
+    <!-- Content-Group -->
     <div class="content-group flex">
-        <div class="flex content-student hidden" id="add-student-content">
+        <!-- Add Student -->
+        <div class="flex content-student" id="add-student-content">
             <div class="form-container">
                 <label for="add-student-name-field">Enter Student Name</label>
                 <input type="text" id="add-student-name-field" name="add-student-name-field" required>
@@ -48,7 +49,7 @@
             </div>
         </div>
         <!-- Delete Student -->
-        <div class="flex content-student" id="delete-student-content">
+        <div class="flex content-student hidden" id="delete-student-content">
             <div class="form-container">
                 <label for="delete-id-field">Enter Id</label>
                 <input type="text" id="delete-id-field" name="delete-id-field" required>
